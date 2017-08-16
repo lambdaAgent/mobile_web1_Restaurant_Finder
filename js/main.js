@@ -4,6 +4,17 @@ let restaurants,
 var map
 var markers = []
 
+//service worker
+
+if ('serviceWorker' in navigator) {
+console.log('navigator available');
+  navigator.serviceWorker.register('/serviceWorker.js').then(function(reg) {
+    console.log('registration successful with scope: ', reg.scope);
+  }).catch(function(err) {
+    console.log('ServiceWorker registration failed: ', err);
+  });
+}
+
 /**
  * Fetch neighborhoods and cuisines as soon as the page is loaded.
  */
@@ -103,7 +114,9 @@ updateRestaurants = () => {
       resetRestaurants(restaurants);
       fillRestaurantsHTML();
     }
-  })
+  });
+
+
 }
 
 /**
@@ -141,6 +154,7 @@ createRestaurantHTML = (restaurant) => {
   const image = document.createElement('img');
   image.className = 'restaurant-img';
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
+  image.setAttribute('alt', restaurant.name);
   li.append(image);
 
   const name = document.createElement('h1');
@@ -159,7 +173,15 @@ createRestaurantHTML = (restaurant) => {
   more.innerHTML = 'View Details';
   more.href = DBHelper.urlForRestaurant(restaurant);
   li.append(more)
-
+  /**
+    <li>
+      <img class='restaurant-img' />
+      <h1>{name}</h1>
+      <p>{neighborhood}</p>
+      <p>
+      <a href=''>View Details</a>
+    </li>
+  */
   return li
 }
 

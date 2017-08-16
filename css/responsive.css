@@ -1,0 +1,50 @@
+/* labels for index.html */
+#labels {
+  margin-top: 10px;
+}
+#labels label{
+  margin-left: 20px;
+}
+#labels label:nth-child(2n){
+  margin-left: 60px;
+}
+/* only show this label in mobile screen*/
+#mobileScreenLabel{
+  display: none;
+}
+
+@media screen and (max-width: 800px){
+  .inside #map-container{
+    display: none !important;
+  }
+
+  .inside #restaurant-container{
+  	width: 100%;
+  	margin-right: 0;
+  }
+  #restaurants-list li {
+    margin: 15px;
+    padding: 0 10px 25px;
+  }
+}
+
+@media screen and (max-width: 500px){
+  .filter-options{
+	  height: 150px;
+  }
+  #restaurant-list {
+  	padding: 10px 30px 60px !important;
+  }
+  #restaurants-list li {
+    margin: 15px;
+    padding: 0 10px 25px;
+  }
+  #mobileScreenLabel{
+    margin-left: 20px;
+    display: inherit;
+  }
+
+  #labels label:nth-child(2n){
+    display: none;
+  }
+}

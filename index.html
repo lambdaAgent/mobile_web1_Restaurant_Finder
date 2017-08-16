@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang='en'>
 
 <head>
   <link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css" />
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <script src='serviceWorker.js'></script>
   <title>Restaurant Reviews</title>
 </head>
 
@@ -21,9 +23,15 @@
     <section>
       <div class="filter-options">
         <h2>Filter Results</h2>
+        <div id="labels">
+          <label for="neighborhoods-select"><span>Choose by neighborhoods</span></label>
+          <label for="cuisines-select"><span>Choose by cuisine</span></label>
+        </div>
+        
         <select id="neighborhoods-select" name="neighborhoods" onchange="updateRestaurants()">
           <option value="all">All Neighborhoods</option>
         </select>
+        <div id='mobileScreenLabel'>Choose by cuisine</div>
         <select id="cuisines-select" name="cuisines" onchange="updateRestaurants()">
           <option value="all">All Cuisines</option>
         </select>
